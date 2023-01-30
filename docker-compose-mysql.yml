@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: 'mysql'
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - DATABASE_HOST=127.0.0.1
+      - MYSQL_USER=mysql
+      - MYSQL_DATABASE=superstore
+    ports:
+      - '3306:3306'
+      
+    volumes:
+    - superstore_mysql_data:/var/lib/mysql
+volumes:
+  superstore_mysql_data: # named volumes can be managed easier using docker-compose
+  
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL : "admin@admin.com"
+  #     PGADMIN_DEFAULT_PASSWORD : "admin"
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - db

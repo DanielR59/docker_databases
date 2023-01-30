@@ -9,19 +9,19 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=superstore
     ports:
-      - '5432:5432'
+      - '5433:5432'
       
     volumes:
     - superstore_pg_data:/var/lib/postgresql/data/ 
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL : "admin@admin.com"
-      PGADMIN_DEFAULT_PASSWORD : "admin"
-    ports:
-      - "80:80"
-    depends_on:
-      - db
 volumes:
   superstore_pg_data: # named volumes can be managed easier using docker-compose
   
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL : "admin@admin.com"
+  #     PGADMIN_DEFAULT_PASSWORD : "admin"
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - db
